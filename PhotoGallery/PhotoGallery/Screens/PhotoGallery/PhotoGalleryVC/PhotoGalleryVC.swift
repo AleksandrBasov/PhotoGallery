@@ -18,11 +18,11 @@ class PhotoGalleryVC: UIViewController {
     
     // - DataSource
     private var dataSource: PhotoGalleryDataSource?
-    
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         configure()
-        
+
     }
 }
 

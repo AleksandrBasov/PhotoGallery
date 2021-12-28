@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import SafariServices
 
 class PhotoCell: UICollectionViewCell {
 
@@ -14,7 +13,8 @@ class PhotoCell: UICollectionViewCell {
     @IBOutlet weak var authorNameButton: UIButton!
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
-        
+    @IBOutlet weak var shadoView: UIView!
+    
     // - Managers
     private let network = NetworkManager.shared
     
@@ -40,17 +40,16 @@ class PhotoCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        configure()
     }
-
+    
     func set(dictionary: Dictionary?, key: String) {
         activityIndicator.startAnimating()
 
         guard let dictionary = dictionary else { return }
         self.userUrl = dictionary.userURL ?? ""
         authorNameButton.setTitle(dictionary.userName, for: .normal)
-        
-        guard let urlString = dictionary.photoURL else { return }
-        
+                
         network.getPhoto(key: key) { image in
             self.activityIndicator.stopAnimating()
             self.activityIndicator.isHidden = true
@@ -61,7 +60,6 @@ class PhotoCell: UICollectionViewCell {
             self.activityIndicator.stopAnimating()
             self.activityIndicator.isHidden = true
         }
-        self.imageView.layer.cornerRadius = 15
     }
 
     
@@ -70,3 +68,12 @@ class PhotoCell: UICollectionViewCell {
     }
 }
 
+// MARK: - Configure
+private extension PhotoCell {
+  
+    func configure() {
+        imageView.addCornerRadius()
+        shadoView.addShadow()
+        authorNameButton.addShadow()
+    }
+}

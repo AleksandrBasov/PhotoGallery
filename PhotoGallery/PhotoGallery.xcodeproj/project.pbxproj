@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		FC80B50B277A552D00843EA4 /* PhotoGalleryDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC80B50A277A552D00843EA4 /* PhotoGalleryDataSource.swift */; };
+		FC80B51F277B856F00843EA4 /* UIView+Shadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC80B51E277B856E00843EA4 /* UIView+Shadow.swift */; };
 		FC8D9BD22779CB5C007780B0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC8D9BD12779CB5C007780B0 /* AppDelegate.swift */; };
 		FC8D9BD42779CB5C007780B0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC8D9BD32779CB5C007780B0 /* SceneDelegate.swift */; };
 		FC8D9BD92779CB5C007780B0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FC8D9BD72779CB5C007780B0 /* Main.storyboard */; };
@@ -25,6 +26,7 @@
 
 /* Begin PBXFileReference section */
 		FC80B50A277A552D00843EA4 /* PhotoGalleryDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoGalleryDataSource.swift; sourceTree = "<group>"; };
+		FC80B51E277B856E00843EA4 /* UIView+Shadow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Shadow.swift"; sourceTree = "<group>"; };
 		FC8D9BCE2779CB5C007780B0 /* PhotoGallery.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PhotoGallery.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC8D9BD12779CB5C007780B0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FC8D9BD32779CB5C007780B0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -59,6 +61,14 @@
 				FC80B50A277A552D00843EA4 /* PhotoGalleryDataSource.swift */,
 			);
 			path = DataSource;
+			sourceTree = "<group>";
+		};
+		FC80B51D277B852400843EA4 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				FC80B51E277B856E00843EA4 /* UIView+Shadow.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 		FC8D9BC52779CB5B007780B0 = {
@@ -98,6 +108,7 @@
 		FC8D9BE72779CBB6007780B0 /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				FC80B51D277B852400843EA4 /* Extension */,
 				FC8D9BF22779CC4D007780B0 /* Constant */,
 				FC8D9BF12779CC3E007780B0 /* Manager */,
 				FC8D9BF02779CC33007780B0 /* Resourse */,
@@ -294,6 +305,7 @@
 				FC8D9C0C2779CD68007780B0 /* NetworkManager.swift in Sources */,
 				FC8D9BFD2779CCF2007780B0 /* PhotoGalleryDelegate.swift in Sources */,
 				FC8D9BF92779CCCF007780B0 /* PhotoGalleryViewModel.swift in Sources */,
+				FC80B51F277B856F00843EA4 /* UIView+Shadow.swift in Sources */,
 				FC8D9BD22779CB5C007780B0 /* AppDelegate.swift in Sources */,
 				FC8D9BD42779CB5C007780B0 /* SceneDelegate.swift in Sources */,
 				FC8D9C062779CD41007780B0 /* PhotoGalleryVC.swift in Sources */,

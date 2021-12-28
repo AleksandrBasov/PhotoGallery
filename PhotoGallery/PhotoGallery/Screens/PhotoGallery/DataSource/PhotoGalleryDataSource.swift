@@ -19,6 +19,8 @@ class PhotoGalleryDataSource: NSObject {
     // - Delegate
     weak var delegate: PhotoGalleryDelegate?
     
+    var visibleIndexPath: IndexPath? = nil
+
     init(collectionView: UICollectionView, viewModel: PhotoGalleryViewModel) {
         self.collectionView = collectionView
         self.viewModel = viewModel
@@ -52,17 +54,64 @@ extension PhotoGalleryDataSource: UICollectionViewDelegate {
         guard let url = value?.photoURL else { return }
         delegate?.presentSafari(url: url)
     }
+    
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
 
+        if let visibleIndexPath = self.visibleIndexPath {
+            if indexPath.row > visibleIndexPath.row {
+                cell.contentView.alpha = 0.3
+                cell.layer.transform = CATransform3DMakeScale(0.5, 0.5, 0.5)
+                UIView.animate(withDuration: 0.5) {
+                    cell.contentView.alpha = 1
+                    cell.layer.transform = CATransform3DScale(CATransform3DIdentity, 1, 1, 1)
+                }
+            } else {
+                cell.contentView.alpha = 0.3
+                cell.layer.transform = CATransform3DMakeScale(0.5, 0.5, 0.5)
+                UIView.animate(withDuration: 0.5) {
+                    cell.contentView.alpha = 1
+                    cell.layer.transform = CATransform3DScale(CATransform3DIdentity, 1, 1, 1)
+                }
+            }
+        }
+    }
 }
 
 //MARK: - UICollectionViewDelegateFlowLayout
 extension PhotoGalleryDataSource: UICollectionViewDelegateFlowLayout {
    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return collectionView.bounds.size 
+        return collectionView.bounds.size
+    }
+    
+    func scrollViewDidScroll(scrollView: UIScrollView) {
+        let offsetY = self.collectionView.contentOffset.y
+        for cell in self.collectionView.visibleCells as! [PhotoCell] {
+            let x = cell.imageView.frame.origin.x
+            let w = cell.imageView.bounds.width
+            let h = cell.imageView.bounds.height
+            let y = ((offsetY - cell.frame.origin.y) / h) * 25
+            cell.imageView.frame = CGRect(x: x, y: y, width: w, height: h)
+        }
     }
 }
 
+// MARK: - UIScrollViewDelegate
+extension PhotoGalleryDataSource: UIScrollViewDelegate {
+   
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        var visibleRect = CGRect()
+
+        visibleRect.origin = collectionView.contentOffset
+        visibleRect.size = collectionView.bounds.size
+
+        let visiblePoint = CGPoint(x: visibleRect.midX, y: visibleRect.midY)
+
+        if let visibleIndexPath = collectionView.indexPathForItem(at: visiblePoint) {
+            self.visibleIndexPath = visibleIndexPath
+        }
+    }
+}
 
 //MARK: - Configure
 private extension PhotoGalleryDataSource {
@@ -75,7 +124,6 @@ private extension PhotoGalleryDataSource {
     func setupDataSource() {
         collectionView.delegate = self
         collectionView.dataSource = self
-
     }
     
     func registerCells() {

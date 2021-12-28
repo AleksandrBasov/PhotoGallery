@@ -4,6 +4,7 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -16,6 +17,10 @@
                 <rect key="frame" x="0.0" y="0.0" width="255" height="385"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TdD-LH-a89">
+                        <rect key="frame" x="30" y="30" width="195" height="285"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nea-ez-DXi">
                         <rect key="frame" x="102.5" y="335" width="50" height="30"/>
                         <constraints>
@@ -31,10 +36,6 @@
                     </button>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="zSD-ly-8so">
                         <rect key="frame" x="30" y="30" width="195" height="285"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="285" id="iN1-hd-HsI"/>
-                            <constraint firstAttribute="width" constant="195" id="qzt-gH-yiQ"/>
-                        </constraints>
                     </imageView>
                     <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="doX-TR-pxc">
                         <rect key="frame" x="117.5" y="162.5" width="20" height="20"/>
@@ -43,24 +44,32 @@
             </view>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <constraints>
-                <constraint firstItem="zSD-ly-8so" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="30" id="DJS-Wl-Ztd"/>
-                <constraint firstAttribute="trailing" secondItem="zSD-ly-8so" secondAttribute="trailing" constant="30" id="HJp-LV-oHS"/>
+                <constraint firstItem="doX-TR-pxc" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="7rS-R7-irk"/>
+                <constraint firstItem="zSD-ly-8so" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="30" id="EWj-IL-m2T"/>
+                <constraint firstItem="TdD-LH-a89" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="30" id="JJv-93-9Gq"/>
+                <constraint firstItem="zSD-ly-8so" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="30" id="Qug-aE-0IL"/>
+                <constraint firstItem="TdD-LH-a89" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="30" id="X0n-hi-jcf"/>
                 <constraint firstAttribute="bottom" secondItem="nea-ez-DXi" secondAttribute="bottom" constant="20" id="XCH-oA-Q2F"/>
-                <constraint firstItem="zSD-ly-8so" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="30" id="ZrP-m4-zLJ"/>
-                <constraint firstItem="doX-TR-pxc" firstAttribute="centerY" secondItem="zSD-ly-8so" secondAttribute="centerY" id="bgj-U8-LUJ"/>
-                <constraint firstItem="nea-ez-DXi" firstAttribute="top" secondItem="zSD-ly-8so" secondAttribute="bottom" constant="20" id="fyd-b8-ip5"/>
+                <constraint firstItem="nea-ez-DXi" firstAttribute="top" secondItem="zSD-ly-8so" secondAttribute="bottom" constant="20" id="bml-UI-Rbu"/>
+                <constraint firstAttribute="trailing" secondItem="TdD-LH-a89" secondAttribute="trailing" constant="30" id="fvl-0R-fdH"/>
+                <constraint firstItem="doX-TR-pxc" firstAttribute="centerY" secondItem="zSD-ly-8so" secondAttribute="centerY" id="mfS-qr-ayR"/>
                 <constraint firstItem="nea-ez-DXi" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="njF-e1-t4L"/>
-                <constraint firstItem="doX-TR-pxc" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="wBR-Lg-tai"/>
+                <constraint firstAttribute="trailing" secondItem="zSD-ly-8so" secondAttribute="trailing" constant="30" id="wHy-Rp-fal"/>
+                <constraint firstItem="nea-ez-DXi" firstAttribute="top" secondItem="TdD-LH-a89" secondAttribute="bottom" constant="20" id="x8t-rw-tli"/>
             </constraints>
             <size key="customSize" width="255" height="385"/>
             <connections>
                 <outlet property="activityIndicator" destination="doX-TR-pxc" id="Xzm-3d-Ag6"/>
                 <outlet property="authorNameButton" destination="nea-ez-DXi" id="fHd-9C-kQJ"/>
-                <outlet property="heightImageView" destination="iN1-hd-HsI" id="QQt-SQ-8gd"/>
                 <outlet property="imageView" destination="zSD-ly-8so" id="5DG-tI-c1j"/>
-                <outlet property="widhtImageView" destination="qzt-gH-yiQ" id="ZBO-3O-Azh"/>
+                <outlet property="shadoView" destination="TdD-LH-a89" id="Hna-b5-wOB"/>
             </connections>
             <point key="canvasLocation" x="284.78260869565219" y="213.95089285714286"/>
         </collectionViewCell>
     </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>
