@@ -12,6 +12,8 @@ class PhotoGalleryViewModel {
     // - Data
     var dictionary: Result = [:]
     var keys: [String] = []
+    var const = Screen.boundsSize
+
     
     // - Delegate
     weak var delegate: PhotoGalleryDelegate?

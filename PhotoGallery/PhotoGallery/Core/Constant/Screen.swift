@@ -8,6 +8,5 @@
 import UIKit
 
 class Screen {
-    static let width = UIScreen.main.bounds.width
-    static let height = UIScreen.main.bounds.height
+    static let boundsSize = CGSize(width: UIScreen.main.bounds.width , height: UIScreen.main.bounds.height - 20)
 }

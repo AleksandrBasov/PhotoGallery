@@ -18,11 +18,25 @@ class PhotoGalleryVC: UIViewController {
     
     // - DataSource
     private var dataSource: PhotoGalleryDataSource?
-        
+            
     override func viewDidLoad() {
         super.viewDidLoad()
         configure()
     }
+    
+    
+    @IBAction func pinchCollectionView(_ sender: UIPinchGestureRecognizer) {
+        if sender.scale < 1 {
+            viewModel.const = CGSize(width: UIScreen.main.bounds.width / 2 , height: UIScreen.main.bounds.height / 2.5)
+        } else {
+            viewModel.const = collectionView.bounds.size
+        }
+        collectionView.reloadData()
+    }
+    
+    @IBAction func longPressCollectionView(_ sender: UILongPressGestureRecognizer) {
+    }
+    
 }
 
 // MARK: - PhotoGalleryDelegate
@@ -55,6 +69,7 @@ private extension PhotoGalleryVC {
         viewModel.delegate = self
         makeRequest()
         configureDataSource()
+        configurePinch()
     }
     
     func configureDataSource() {
@@ -66,5 +81,9 @@ private extension PhotoGalleryVC {
         viewModel.fetchData()
     }
     
+    func configurePinch() {
+        let recognizerPinch = UIPinchGestureRecognizer(target: self, action: #selector(pinchCollectionView(_:)))
+        collectionView.addGestureRecognizer(recognizerPinch)
+    }
 }
 
