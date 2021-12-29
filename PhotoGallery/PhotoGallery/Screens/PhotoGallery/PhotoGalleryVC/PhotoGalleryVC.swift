@@ -35,6 +35,19 @@ class PhotoGalleryVC: UIViewController {
     }
     
     @IBAction func longPressCollectionView(_ sender: UILongPressGestureRecognizer) {
+        let gestureLocation = sender.location(in: collectionView)
+        
+        switch sender.state {
+        case .began:
+            guard let targetIndexPath = collectionView.indexPathForItem(at: gestureLocation) else { return }
+            collectionView.beginInteractiveMovementForItem(at: targetIndexPath)
+        case .changed:
+            collectionView.updateInteractiveMovementTargetPosition(gestureLocation)
+        case .ended:
+            collectionView.endInteractiveMovement()
+        default:
+            collectionView.endInteractiveMovement()
+        }
     }
     
 }
@@ -70,6 +83,7 @@ private extension PhotoGalleryVC {
         makeRequest()
         configureDataSource()
         configurePinch()
+        configureLongPress()
     }
     
     func configureDataSource() {
@@ -84,6 +98,11 @@ private extension PhotoGalleryVC {
     func configurePinch() {
         let recognizerPinch = UIPinchGestureRecognizer(target: self, action: #selector(pinchCollectionView(_:)))
         collectionView.addGestureRecognizer(recognizerPinch)
+    }
+    
+    func configureLongPress() {
+        let recognizerLongPress = UILongPressGestureRecognizer(target: self, action: #selector(longPressCollectionView(_:)))
+        collectionView.addGestureRecognizer(recognizerLongPress)
     }
 }
 

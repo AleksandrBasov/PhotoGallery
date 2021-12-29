@@ -64,6 +64,11 @@ extension PhotoGalleryDataSource: UICollectionViewDelegate {
             
         }
     }
+    
+    func collectionView(_ collectionView: UICollectionView, moveItemAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        let item = viewModel.keys.remove(at: sourceIndexPath.row)
+        viewModel.keys.insert(item, at: destinationIndexPath.row)
+    }
 }
 
 //MARK: - UICollectionViewDelegateFlowLayout
