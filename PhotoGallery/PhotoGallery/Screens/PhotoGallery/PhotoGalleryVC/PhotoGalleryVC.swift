@@ -24,7 +24,10 @@ class PhotoGalleryVC: UIViewController {
         configure()
     }
     
-    
+}
+// MARK: - GestureAction
+extension PhotoGalleryVC {
+   
     @IBAction func pinchCollectionView(_ sender: UIPinchGestureRecognizer) {
         if sender.scale < 1 {
             viewModel.const = CGSize(width: UIScreen.main.bounds.width / 2 , height: UIScreen.main.bounds.height / 2.5)
@@ -49,12 +52,11 @@ class PhotoGalleryVC: UIViewController {
             collectionView.endInteractiveMovement()
         }
     }
-    
 }
 
 // MARK: - PhotoGalleryDelegate
 extension PhotoGalleryVC: PhotoGalleryDelegate {
-    
+
     func reloadData() {
         collectionView.reloadData()
     }
@@ -64,6 +66,11 @@ extension PhotoGalleryVC: PhotoGalleryDelegate {
         let vc = SFSafariViewController(url: url)
         present(vc, animated: true)
     }
+    
+    func showError(text: String) {
+        showAlert(message: text)
+    }
+    
 }
 
 // MARK: - ViewWillTransition

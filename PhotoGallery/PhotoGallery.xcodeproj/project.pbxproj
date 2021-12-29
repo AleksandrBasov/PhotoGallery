@@ -22,6 +22,7 @@
 		FC8D9C062779CD41007780B0 /* PhotoGalleryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC8D9C052779CD41007780B0 /* PhotoGalleryVC.swift */; };
 		FC8D9C092779CD53007780B0 /* Screen.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC8D9C082779CD53007780B0 /* Screen.swift */; };
 		FC8D9C0C2779CD68007780B0 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC8D9C0B2779CD68007780B0 /* NetworkManager.swift */; };
+		FCB7C577277C93CA00A0EFA8 /* UIViewController + Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB7C576277C93CA00A0EFA8 /* UIViewController + Alert.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +43,7 @@
 		FC8D9C052779CD41007780B0 /* PhotoGalleryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoGalleryVC.swift; sourceTree = "<group>"; };
 		FC8D9C082779CD53007780B0 /* Screen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Screen.swift; sourceTree = "<group>"; };
 		FC8D9C0B2779CD68007780B0 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		FCB7C576277C93CA00A0EFA8 /* UIViewController + Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController + Alert.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +69,7 @@
 			isa = PBXGroup;
 			children = (
 				FC80B51E277B856E00843EA4 /* UIView+Shadow.swift */,
+				FCB7C576277C93CA00A0EFA8 /* UIViewController + Alert.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -302,6 +305,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FC80B50B277A552D00843EA4 /* PhotoGalleryDataSource.swift in Sources */,
+				FCB7C577277C93CA00A0EFA8 /* UIViewController + Alert.swift in Sources */,
 				FC8D9C0C2779CD68007780B0 /* NetworkManager.swift in Sources */,
 				FC8D9BFD2779CCF2007780B0 /* PhotoGalleryDelegate.swift in Sources */,
 				FC8D9BF92779CCCF007780B0 /* PhotoGalleryViewModel.swift in Sources */,

@@ -10,4 +10,5 @@ import Foundation
 protocol PhotoGalleryDelegate: AnyObject {
     func reloadData()
     func presentSafari(url: String)
+    func showError(text: String)
 }

@@ -29,7 +29,7 @@ class PhotoGalleryViewModel {
             }
             self.delegate?.reloadData()
         } onError: { error in
-            print(error)
+            self.delegate?.showError(text: error)
         }
     }
 }

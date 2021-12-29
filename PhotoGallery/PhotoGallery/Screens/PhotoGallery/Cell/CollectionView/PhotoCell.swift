@@ -63,11 +63,12 @@ class PhotoCell: UICollectionViewCell {
             self.shadowView.isHidden = false
         }
     }
-
     
+
     @IBAction func nameButtonTapp(_ sender: Any) {
         self.delegate?.presentSafari(url: userUrl)
     }
+    
 }
 
 // MARK: - Configure
@@ -79,3 +80,6 @@ private extension PhotoCell {
         authorNameButton.addShadow()
     }
 }
+
+
+
