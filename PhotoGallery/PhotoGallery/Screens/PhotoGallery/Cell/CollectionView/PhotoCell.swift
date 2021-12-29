@@ -13,7 +13,7 @@ class PhotoCell: UICollectionViewCell {
     @IBOutlet weak var authorNameButton: UIButton!
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
-    @IBOutlet weak var shadoView: UIView!
+    @IBOutlet weak var shadowView: UIView!
     
     // - Managers
     private let network = NetworkManager.shared
@@ -53,12 +53,14 @@ class PhotoCell: UICollectionViewCell {
         network.getPhoto(key: key) { image in
             self.activityIndicator.stopAnimating()
             self.activityIndicator.isHidden = true
+            self.shadowView.isHidden = false
             self.imageView.image = image
         } onError: { error in
             print(error)
             self.imageView.image = UIImage(named: "placeholder")
             self.activityIndicator.stopAnimating()
             self.activityIndicator.isHidden = true
+            self.shadowView.isHidden = false
         }
     }
 
@@ -73,7 +75,7 @@ private extension PhotoCell {
   
     func configure() {
         imageView.addCornerRadius()
-        shadoView.addShadow()
+        shadowView.addShadow()
         authorNameButton.addShadow()
     }
 }

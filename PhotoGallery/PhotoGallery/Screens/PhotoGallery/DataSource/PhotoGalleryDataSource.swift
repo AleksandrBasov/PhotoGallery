@@ -56,23 +56,12 @@ extension PhotoGalleryDataSource: UICollectionViewDelegate {
     }
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-
-        if let visibleIndexPath = self.visibleIndexPath {
-            if indexPath.row > visibleIndexPath.row {
-                cell.contentView.alpha = 0.3
-                cell.layer.transform = CATransform3DMakeScale(0.5, 0.5, 0.5)
-                UIView.animate(withDuration: 0.5) {
-                    cell.contentView.alpha = 1
-                    cell.layer.transform = CATransform3DScale(CATransform3DIdentity, 1, 1, 1)
-                }
-            } else {
-                cell.contentView.alpha = 0.3
-                cell.layer.transform = CATransform3DMakeScale(0.5, 0.5, 0.5)
-                UIView.animate(withDuration: 0.5) {
-                    cell.contentView.alpha = 1
-                    cell.layer.transform = CATransform3DScale(CATransform3DIdentity, 1, 1, 1)
-                }
-            }
+        cell.contentView.alpha = 0.3
+        cell.layer.transform = CATransform3DMakeScale(0.5, 0.5, 0.5)
+        UIView.animate(withDuration: 0.5) {
+            cell.contentView.alpha = 1
+            cell.layer.transform = CATransform3DScale(CATransform3DIdentity, 1, 1, 1)
+            
         }
     }
 }
@@ -83,17 +72,7 @@ extension PhotoGalleryDataSource: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return collectionView.bounds.size
     }
-    
-    func scrollViewDidScroll(scrollView: UIScrollView) {
-        let offsetY = self.collectionView.contentOffset.y
-        for cell in self.collectionView.visibleCells as! [PhotoCell] {
-            let x = cell.imageView.frame.origin.x
-            let w = cell.imageView.bounds.width
-            let h = cell.imageView.bounds.height
-            let y = ((offsetY - cell.frame.origin.y) / h) * 25
-            cell.imageView.frame = CGRect(x: x, y: y, width: w, height: h)
-        }
-    }
+
 }
 
 // MARK: - UIScrollViewDelegate

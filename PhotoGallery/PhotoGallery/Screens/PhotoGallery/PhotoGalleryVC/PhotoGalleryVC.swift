@@ -22,7 +22,6 @@ class PhotoGalleryVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configure()
-
     }
 }
 
@@ -37,6 +36,15 @@ extension PhotoGalleryVC: PhotoGalleryDelegate {
         guard let url = URL(string: url) else { return }
         let vc = SFSafariViewController(url: url)
         present(vc, animated: true)
+    }
+}
+
+// MARK: - ViewWillTransition
+extension PhotoGalleryVC {
+   
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        collectionView.reloadData()
     }
 }
 
@@ -59,3 +67,4 @@ private extension PhotoGalleryVC {
     }
     
 }
+
